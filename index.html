@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="container" id="app" v-cloak>
+      <div class="card">
+        <div class="form-comtrol">
+          <input type="text" @keyup.enter="addItem($event)" ref="myInput" />
+        </div>
+        <ul class="list" v-if="items.length">
+          <!-- <li
+            class="list-item"
+            v-for="(item, i) in items"
+            @click="items.splice(i, 1)"
+            :key="item"
+          >
+            <strong>{{item}}</strong>&nbsp;
+            <input type="text" @click.stop />
+          </li> -->
+          <li
+            class="list-item"
+            v-for="(item, i) in evenItems"
+            @click.right.prevent="remove(i), log(item)"
+            :key="item"
+          >
+            <strong>{{item}}</strong>&nbsp;
+            <input type="text" @click.stop />
+          </li>
+        </ul>
+        <h3 v-show="!items.length">Here is empty</h3>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
